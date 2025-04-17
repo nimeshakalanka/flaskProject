@@ -16,8 +16,8 @@ cloudinary.config(
 )
 
 client = MongoClient("mongodb+srv://drldxqy:admin@cluster0.iow2yxe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") 
-db = client['image_gallery']
-images_collection = db['images']
+db = client['image_gallery_01']
+images_collection = db['images1']
 
 if not os.path.exists('uploads'):
     os.makedirs('uploads')
