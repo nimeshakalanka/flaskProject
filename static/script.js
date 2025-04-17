@@ -13,7 +13,7 @@ navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
         canvas.height = video.videoHeight;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        const dataURL = canvas.toDataURL('image/jpeg', 0.5);  // Compress to 50%
+        const dataURL = canvas.toDataURL('image/jpeg', 0.5);  
 
         const formData = new FormData();
         formData.append('image', dataURL);
