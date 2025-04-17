@@ -7,21 +7,18 @@ import cloudinary.uploader
 from pymongo import MongoClient
 
 app = Flask(__name__)
-app.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024  # 32MB limit
+app.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024
 
-# Cloudinary Config
 cloudinary.config(
   cloud_name = "dluwvqdaz",
   api_key = "734782482834278",
   api_secret = "aBZQjye7DZmaKEU06ii_mW090Dc"
 )
 
-# MongoDB Config
-client = MongoClient("mongodb+srv://drldxqy:admin@cluster0.iow2yxe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")  # or your MongoDB URI
+client = MongoClient("mongodb+srv://drldxqy:admin@cluster0.iow2yxe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") 
 db = client['image_gallery']
 images_collection = db['images']
 
-# Make uploads folder if not exist
 if not os.path.exists('uploads'):
     os.makedirs('uploads')
 
@@ -39,17 +36,14 @@ def upload():
     with open(filename, 'wb') as f:
         f.write(data)
 
-    # Upload to Cloudinary
     result = cloudinary.uploader.upload(filename)
     image_url = result['secure_url']
 
-    # Save to MongoDB
     images_collection.insert_one({
         "url": image_url,
         "timestamp": datetime.now()
     })
 
-    # Remove local file
     os.remove(filename)
 
     print(f"Uploaded to {image_url}")
@@ -57,7 +51,7 @@ def upload():
 
 @app.route('/gallery')
 def gallery():
-    images = list(images_collection.find().sort("timestamp", -1))  # latest first
+    images = list(images_collection.find().sort("timestamp", -1)) 
     return render_template('gallery.html', images=images)
 
 if __name__ == '__main__':
