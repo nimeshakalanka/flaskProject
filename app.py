@@ -15,8 +15,7 @@ cloudinary.config(
   api_secret = "aBZQjye7DZmaKEU06ii_mW090Dc"
 )
 
-#client = MongoClient("mongodb+srv://drldxqy:admin@cluster0.iow2yxe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") 
-client = MongoClient("mongodb+srv://susltg:susltg@cluster0.pwsuf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = MongoClient("mongodb+srv://susltg:KAxWDZYFnmz2GtPj@cluster0.pwsuf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client['image_gallery_01']
 images_collection = db['images1']
 
@@ -57,4 +56,5 @@ def gallery():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
+    #app.run(host='0.0.0.0', port=81)
 
